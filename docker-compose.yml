@@ -1,0 +1,48 @@
+version: '3'
+services:
+  redis-pubsub-go-1:
+    image: golang:1.11-alpine3.8
+    working_dir: "/go"
+    links:
+      - 'redis-pubsub-go-redis:redis-pubsub-go-redis'
+    volumes:
+      - .:/go
+    ports:
+      - "7101:80"
+    stdin_open: true
+    command: /bin/ash
+
+  redis-pubsub-go-2:
+    image: golang:1.11-alpine3.8
+    working_dir: "/go"
+    links:
+      - 'redis-pubsub-go-redis:redis-pubsub-go-redis'
+    volumes:
+      - .:/go
+    ports:
+      - "7102:80"
+    stdin_open: true
+    command: /bin/ash
+
+  redis-pubsub-go-3:
+    image: golang:1.11-alpine3.8
+    working_dir: "/go"
+    links:
+      - 'redis-pubsub-go-redis:redis-pubsub-go-redis'
+    volumes:
+      - .:/go
+    ports:
+      - "7103:80"
+    stdin_open: true
+    command: /bin/ash
+
+  redis-pubsub-go-redis:
+      image: redis:4.0.6-alpine
+      ports:
+        - '6379:6379'
+
+
+
+
+
+
